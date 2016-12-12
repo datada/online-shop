@@ -23,19 +23,19 @@ OnlineShop using the laravel 5
 ../online-shop/auth/login
 
 (Username/Password: admin/123456)
-- Trang thêm/sửa/xóa loại sản phẩm
+- Trang quản lý loại sản phẩm (thêm/sửa/xóa):
 
 ../online-shop/admin/cate/add
 
 ../online-shop/admin/cate/list
 
-- Trang thêm/sửa/xóa sản phẩm
+- Trang quản lý sản phẩm (thêm/sửa/xóa):
 
 ../online-shop/admin/product/add
 
 ../online-shop/admin/product/list
 
-- Trang thêm/sửa/xóa user
+- Trang quản lý user (thêm/sửa/xóa):
 
 ../online-shop/admin/user/add
 
