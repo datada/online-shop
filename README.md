@@ -31,9 +31,9 @@ OnlineShop using the laravel 5
 
 - Trang quản lý sản phẩm (thêm/sửa/xóa):
 
-/admi/product/add
+/admin/product/add
 
-/admi/product/list
+/admin/product/list
 
 - Trang quản lý user (thêm/sửa/xóa):
 
