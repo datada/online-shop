@@ -19,9 +19,9 @@
                                 <td>{!!$item_user['username'] !!}</td>
                                 <td>
                                     @if ($item_user['level']==1)
-                                        Admin
-                                    @elseif ($item_user['level']==2)
                                         Member
+                                    @elseif ($item_user['level']==2)
+                                        Admin
                                     @else
                                         Superadmin
                                     @endif

@@ -43,7 +43,7 @@ class AuthController extends Controller {
 		$login = array(
 			'username' => $request->username,
 			'password' => $request->password,
-			'level' => 1
+			'level' => 2
 		);
 
 		if($this->auth->attempt($login)){

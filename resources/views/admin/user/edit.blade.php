@@ -26,18 +26,18 @@
                             <div class="form-group">
                                 <label>User Level</label>
                                 <label class="radio-inline">
-                                    <input name="rdoLevel" value="1" checked="" type="radio"
-                                    @if($data["level"]==1)
-                                        checked="checked"
-                                    @endif
-                                    >Admin
-                                </label>
-                                <label class="radio-inline">
-                                    <input name="rdoLevel" value="2" type="radio"
+                                    <input name="rdoLevel" value="1" type="radio"
                                     @if($data["level"]==1)
                                         checked="checked"
                                     @endif
                                     >Member
+                                </label>
+                                <label class="radio-inline">
+                                    <input name="rdoLevel" value="2" type="radio"
+                                    @if($data["level"]==2)
+                                        checked="checked"
+                                    @endif
+                                    >Admin
                                 </label>
                             </div>
                             @endif

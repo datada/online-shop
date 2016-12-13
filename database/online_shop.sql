@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 03, 2016 at 11:05 AM
--- Server version: 5.7.9
--- PHP Version: 5.6.16
+-- Generation Time: Dec 13, 2016 at 09:31 AM
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 7.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,9 +26,8 @@ SET time_zone = "+00:00";
 -- Table structure for table `cates`
 --
 
-DROP TABLE IF EXISTS `cates`;
-CREATE TABLE IF NOT EXISTS `cates` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `cates` (
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `alias` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `order` int(11) NOT NULL,
@@ -36,10 +35,8 @@ CREATE TABLE IF NOT EXISTS `cates` (
   `keywords` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `cates_name_unique` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `cates`
@@ -65,8 +62,7 @@ INSERT INTO `cates` (`id`, `name`, `alias`, `order`, `parent_id`, `keywords`, `d
 -- Table structure for table `migrations`
 --
 
-DROP TABLE IF EXISTS `migrations`;
-CREATE TABLE IF NOT EXISTS `migrations` (
+CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -88,13 +84,10 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 -- Table structure for table `password_resets`
 --
 
-DROP TABLE IF EXISTS `password_resets`;
-CREATE TABLE IF NOT EXISTS `password_resets` (
+CREATE TABLE `password_resets` (
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  KEY `password_resets_email_index` (`email`),
-  KEY `password_resets_token_index` (`token`)
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -103,9 +96,8 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
 -- Table structure for table `products`
 --
 
-DROP TABLE IF EXISTS `products`;
-CREATE TABLE IF NOT EXISTS `products` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `products` (
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `alias` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `price` int(11) NOT NULL,
@@ -117,12 +109,8 @@ CREATE TABLE IF NOT EXISTS `products` (
   `user_id` int(10) UNSIGNED NOT NULL,
   `cate_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `products_name_unique` (`name`),
-  KEY `products_user_id_foreign` (`user_id`),
-  KEY `products_cate_id_foreign` (`cate_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `products`
@@ -176,24 +164,19 @@ INSERT INTO `products` (`id`, `name`, `alias`, `price`, `intro`, `content`, `ima
 -- Table structure for table `product_images`
 --
 
-DROP TABLE IF EXISTS `product_images`;
-CREATE TABLE IF NOT EXISTS `product_images` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `product_images` (
+  `id` int(10) UNSIGNED NOT NULL,
   `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `product_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`),
-  KEY `product_images_product_id_foreign` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `product_images`
 --
 
 INSERT INTO `product_images` (`id`, `image`, `product_id`, `created_at`, `updated_at`) VALUES
-(2, '3349.png', 1, '2016-08-01 09:01:27', '2016-08-01 09:01:27'),
-(3, '3168.png', 1, '2016-08-01 09:01:27', '2016-08-01 09:01:27'),
 (5, '4462.jpg', 2, '2016-08-01 09:06:07', '2016-08-01 09:06:07'),
 (6, '4392.jpg', 2, '2016-08-01 09:06:07', '2016-08-01 09:06:07'),
 (8, '4470.jpg', 3, '2016-08-01 09:07:39', '2016-08-01 09:07:39'),
@@ -252,7 +235,8 @@ INSERT INTO `product_images` (`id`, `image`, `product_id`, `created_at`, `update
 (90, '50.jpg', 39, '2016-08-01 11:16:39', '2016-08-01 11:16:39'),
 (91, '3769.jpg', 40, '2016-08-02 05:46:08', '2016-08-02 05:46:08'),
 (92, '0047.jpg', 41, '2016-08-02 05:48:32', '2016-08-02 05:48:32'),
-(94, '9965.jpg', 41, '2016-08-02 05:49:29', '2016-08-02 05:49:29');
+(94, '9965.jpg', 41, '2016-08-02 05:49:29', '2016-08-02 05:49:29'),
+(95, '3168.png', 1, '2016-12-12 16:56:19', '2016-12-12 16:56:19');
 
 -- --------------------------------------------------------
 
@@ -260,9 +244,8 @@ INSERT INTO `product_images` (`id`, `image`, `product_id`, `created_at`, `update
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -270,19 +253,86 @@ CREATE TABLE IF NOT EXISTS `users` (
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `users_username_unique` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `password_md5` varchar(60) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `level`, `remember_token`, `created_at`, `updated_at`) VALUES
-(2, 'admin', '$2y$10$cYHg0UBvtva.Q9d6ALK.xeg12EhNeIHyBAskZ/wzTqZsmNUKJeBsK', 'admin@gmail.com', 1, 'YbjTsxbHTDNthQKz9neelzXr3upigbmzbfgTuJFewSzTvh9qAuz2XmxFJBen', '2016-07-28 19:45:25', '2016-08-02 05:49:58'),
-(3, 'member', '$2y$10$5/cTYfRUlhjOO8j6QNbu8uBsr6Y7dpJPDZvqV/36cvGRSKsETSAMW', 'member@gmail.com', 2, 'WjHjW8Fi00PfiCWt806vT4iDdzJaspE4JTc1eMNg', '2016-07-28 19:46:15', '2016-07-28 19:46:15'),
-(4, 'super', '$2y$10$0A5JOYC8MqYmeZP0lFadXuL7nod5q8j2rsaGN8fiK.AQTBNHjy4tK', 'super@gmail.com', 3, 'WjHjW8Fi00PfiCWt806vT4iDdzJaspE4JTc1eMNg', '2016-07-28 21:06:37', '2016-07-28 21:06:37');
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `level`, `remember_token`, `created_at`, `updated_at`, `password_md5`) VALUES
+(2, 'admin', '$2y$10$cYHg0UBvtva.Q9d6ALK.xeg12EhNeIHyBAskZ/wzTqZsmNUKJeBsK', 'admin@gmail.com', 2, 'ajJm1Yd4c8iWvWa332mCAgSnIMGht4z5ElJSxll8PVKERD21VwdoBrKophhk', '2016-07-28 19:45:25', '2016-12-12 23:39:19', 'e10adc3949ba59abbe56e057f20f883e'),
+(3, 'member', '$2y$10$5/cTYfRUlhjOO8j6QNbu8uBsr6Y7dpJPDZvqV/36cvGRSKsETSAMW', 'member@gmail.com', 1, 'WjHjW8Fi00PfiCWt806vT4iDdzJaspE4JTc1eMNg', '2016-07-28 19:46:15', '2016-07-28 19:46:15', ''),
+(4, 'super', '$2y$10$0A5JOYC8MqYmeZP0lFadXuL7nod5q8j2rsaGN8fiK.AQTBNHjy4tK', 'super@gmail.com', 3, 'WjHjW8Fi00PfiCWt806vT4iDdzJaspE4JTc1eMNg', '2016-07-28 21:06:37', '2016-07-28 21:06:37', ''),
+(6, 's', '$2y$10$4pFvKmL4OmA8UVB1R0o.5OIw3/SjkyTU./HKr70FdhhfoxFsyKoi2', 's@gmail.com', 2, 'VY8fgD1SnND2JqIF2IT7LjorB1UaCembkt0V0AZu', '2016-12-12 23:31:22', '2016-12-12 23:31:22', ''),
+(8, 'ad@gmail.com', '$2y$10$3k7eT8tdU9PDtHLdK/7OdeBT5sCY5oBVekRO.Hav25XX73Scklzmu', 'ad@gmail.com', 2, 'VY8fgD1SnND2JqIF2IT7LjorB1UaCembkt0V0AZu', '2016-12-13 00:35:17', '2016-12-13 00:38:23', ''),
+(10, 'abc', '', 'abc@abc.com', 1, NULL, '2016-12-13 08:24:03', '2016-12-13 08:24:03', '900150983cd24fb0d6963f7d28e17f72');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `cates`
+--
+ALTER TABLE `cates`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `cates_name_unique` (`name`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`),
+  ADD KEY `password_resets_token_index` (`token`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `products_name_unique` (`name`),
+  ADD KEY `products_user_id_foreign` (`user_id`),
+  ADD KEY `products_cate_id_foreign` (`cate_id`);
+
+--
+-- Indexes for table `product_images`
+--
+ALTER TABLE `product_images`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_images_product_id_foreign` (`product_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_username_unique` (`username`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `cates`
+--
+ALTER TABLE `cates`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+--
+-- AUTO_INCREMENT for table `product_images`
+--
+ALTER TABLE `product_images`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- Constraints for dumped tables
 --

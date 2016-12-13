@@ -27,10 +27,10 @@ class UserController extends Controller {
 		$user->save();
 		return redirect()->route('admin.user.list')->with(['flash_level'=>'success','flash_message'=>'Success !! Complete add user']);
 	}
-	public function getDel($id){
+	public function getDelete($id){
 		$user_current_login = Auth::user()->id;
 		$user = User::find($id);
-		if(($id==4) || ($user_current_login != 4 && $user["level"] ==1)){
+		if(($id==4) || ($user_current_login != 4 && $user["level"] == 2)){
 			return redirect()->route('admin.user.list')->with(['flash_level'=>'danger','flash_message'=>'Sorry !! You can\'t access delete user']);
 		}else{
 			$user->delete($id);
@@ -39,7 +39,7 @@ class UserController extends Controller {
 	}
 	public function getEdit($id){
 		$data = User::find($id);
-		if ((Auth::user()->id!=4) && ($id==2 || ($data["level"]==1 && Auth::user()->id != $id) ) ){
+		if ((Auth::user()->id!=4) && ($id==1 || ($data["level"]==2 && Auth::user()->id != $id) ) ){
 			return redirect()->route('admin.user.list')->with(['flash_level'=>'danger','flash_message'=>'Sorry !! You can\'t access edit user']);
 		}
 		return view('admin.user.edit',compact('data','id'));
