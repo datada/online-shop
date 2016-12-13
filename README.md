@@ -15,6 +15,7 @@ OnlineShop using the laravel 5
 - Trang loại sản phẩm
 - Trang chi tiết sản phẩm
 - Trang giỏ hàng
+- Trang liên hệ
 
 <h3> [Dành cho admin] </h3>
 - Trang đăng nhập
